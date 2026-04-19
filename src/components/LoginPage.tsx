@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { login, register } from '../services/auth/auth';
+import { useAuth } from '../Context/AuthProvider';
+
+import '../styles/global.css';
 
 const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isRegister, setIsRegister] = useState(false);
+
+    const { refreshUser } = useAuth();
 
     const [registerData, setRegisterData] = useState({
         email: '',
@@ -20,11 +25,14 @@ const LoginPage = ({ onLogin }: { onLogin: () => void }) => {
 
         try {
             await login(email, password);
-
+            await refreshUser();
             // cookie уже установлена backend'ом
             onLogin();
         } catch (e: any) {
-            setError("Неверный логин или пароль");
+            if (e.response?.status === 401)
+                setError("Неверный логин или пароль");
+            else
+                setError("Ошибка сервера");
         }
     };
 
