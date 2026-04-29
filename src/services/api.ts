@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://audibly-rummage-survival.ngrok-free.dev",
+    baseURL: "https://localhost:2599/",
     withCredentials: true
 });
 
