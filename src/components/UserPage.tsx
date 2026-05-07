@@ -178,9 +178,9 @@ const UserPage = ({ onLogout }: { onLogout?: () => void }) => {
                                         </div>
                                     </div>
 
-                                    <label style={S.label}>Описание груза (на английском)</label>
-                                    <textarea style={S.textarea} placeholder="Frozen food, Furniture, Electronics..." value={form.description} onChange={e => setF('description', e.target.value)} />
-                                    <p style={S.hint}>💡 Описание на английском повышает точность AI подбора транспорта</p>
+                                    <label style={S.label}>Описание груза</label>
+                                    <textarea style={S.textarea} placeholder="Мясо, диван, электроника..." value={form.description} onChange={e => setF('description', e.target.value)} />
+                                    <p style={S.hint}>💡 Правильное описание повышает точность AI подбора транспорта</p>
 
                                     <div style={S.row}>
                                         <div>

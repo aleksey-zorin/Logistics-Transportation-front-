@@ -21,7 +21,7 @@ export default function RouteMap({ from, to }: Props) {
 
     const geocode = async (text: string): Promise<[number, number] | null> => {
         const r = await fetch(
-            `https://localhost:2599/api/geo/search?q=${encodeURIComponent(text)}`,
+            `https://localhost:56782/api/geo/search?q=${encodeURIComponent(text)}`,
             { credentials: 'include' }
         );
         const j = await r.json();
@@ -40,7 +40,7 @@ export default function RouteMap({ from, to }: Props) {
             
             setPoints([[start[1], start[0]], [end[1], end[0]]]);
             
-            const res = await fetch('https://localhost:2599/api/geo/route', {
+            const res = await fetch('https://localhost:56782/api/geo/route', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
